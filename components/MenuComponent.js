@@ -9,7 +9,8 @@ function Menu(props) {
         key={index}
         title={item.name}
         subtitle={item.description}
-        hideChevron={true} //hide chevron on ios
+        hideChevron={true}
+        onPress={() => props.onPress(item.id)}
         leftAvatar={{ source: require("./images/uthappizza.png") }} //render image
       />
     );
