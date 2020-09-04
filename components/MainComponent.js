@@ -5,6 +5,7 @@ import Contact from "./ContactComponent";
 import About from "./AboutComponent";
 import Dishdetail from "./DishdetailComponent";
 import Reservation from "./ReservationComponent";
+import Favorites from "./FavoriteComponent";
 import {
   View,
   Platform,
@@ -150,6 +151,31 @@ const ReservationNavigator = createStackNavigator(
   }
 );
 
+const FavoriteNavigator = createStackNavigator(
+  {
+    Favorites: { screen: Favorites },
+  },
+  {
+    navigationOptions: ({ navigation }) => ({
+      headerStyle: {
+        backgroundColor: "#512DA8",
+      },
+      headerTitleStyle: {
+        color: "#fff",
+      },
+      headerTintColor: "#fff",
+      headerLeft: (
+        <Icon
+          name="menu"
+          size={24}
+          iconStyle={{ color: "white" }}
+          onPress={() => navigation.navigate("DrawerToggle")}
+        />
+      ),
+    }),
+  }
+);
+
 const AboutNavigator = createStackNavigator(
   {
     About: { screen: About },
@@ -247,6 +273,21 @@ const MainNavigator = createDrawerNavigator(
             type="font-awesome"
             size={22}
             color={tintColor}
+          />
+        ),
+      },
+    },
+    Favorites: {
+      screen: FavoriteNavigator,
+      navigationOptions: {
+        title: "My Favorites",
+        drawerLabel: "My Favorites",
+        drawerIcon: ({ tintColor, focused }) => (
+          <Icon
+            name="heart"
+            type="font-awesome"
+            size={24}
+            iconStyle={{ color: tintColor }}
           />
         ),
       },
