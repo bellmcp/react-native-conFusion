@@ -15,6 +15,8 @@ import {
   ScrollView,
   Text,
 } from "react-native";
+import Toast from "react-native-tiny-toast";
+import NetInfo from "@react-native-community/netinfo";
 import {
   createStackNavigator,
   createDrawerNavigator,
@@ -362,7 +364,44 @@ class Main extends Component {
     this.props.fetchComments();
     this.props.fetchPromos();
     this.props.fetchLeaders();
+
+    NetInfo.fetch().then((connectionInfo) => {
+      ToastAndroid.show(
+        "Initial Network Connectivity Type: " + connectionInfo.type,
+        ToastAndroid.LONG
+      );
+    });
+
+    NetInfo.addEventListener((connectionChange) =>
+      this.handleConnectivityChange(connectionChange)
+    );
   }
+
+  componentWillUnmount() {
+    NetInfo.removeEventListener((connectionChange) =>
+      this.handleConnectivityChange(connectionChange)
+    );
+  }
+
+  handleConnectivityChange = (connectionInfo) => {
+    switch (connectionInfo.type) {
+      case "none":
+        Toast.show("You are now offline", { duration: 2000 });
+        break;
+      case "wifi":
+        Toast.show("You are now on WiFi", { duration: 2000 });
+        break;
+      case "cellular":
+        Toast.show("You are now on Cellular", { duration: 2000 });
+        break;
+      case "unknown":
+        Toast.show("You are now have an Unknown connection", {
+          duration: 2000,
+        });
+        break;
+      default:
+    }
+  };
 
   render() {
     return (
