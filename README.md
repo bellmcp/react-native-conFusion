@@ -1,2 +1,2 @@
 # react-native-conFusion
-Part of Multiplatform Mobile App Development with React Native on Coursera
+ConFusion website developed using React Native
