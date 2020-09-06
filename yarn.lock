@@ -6149,6 +6149,11 @@ expo-asset@^8.1.7, expo-asset@~8.1.7:
     path-browserify "^1.0.0"
     url-parse "^1.4.4"
 
+expo-calendar@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/expo-calendar/-/expo-calendar-8.3.0.tgz#089fc2bafef78b390330b5f49405466cb7cff2b9"
+  integrity sha512-RezueE05UGbkeQKQG6813PaVa19GPjhStApwt7SRLboYRIjVvmzvl3NNFVQHLfCBmh79t3tIgHK7yNOUrfpCWg==
+
 expo-cli@^3.25.1:
   version "3.25.1"
   resolved "https://registry.yarnpkg.com/expo-cli/-/expo-cli-3.25.1.tgz#42e91e07c817fad322f4946917cde31e3df07bee"
